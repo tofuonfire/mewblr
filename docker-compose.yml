@@ -11,7 +11,8 @@ services:
     ports:
       - 3306:3306
     command: mysqld --character-set-server=utf8mb4 --explicit_defaults_for_timestamp=true
-  rails:
+
+  web:
     build:
       context: .
     volumes:
@@ -24,16 +25,18 @@ services:
     depends_on:
       - db
     command: sh scripts/launch.sh
+
   nginx:
     build:
       context: ./nginx
     ports:
       - 80:80
     depends_on:
-      - rails
+      - web
     volumes:
       - public-data:/mewblr/public
       - tmp-data:/mewblr/tmp
+
 volumes:
   public-data:
   tmp-data:
