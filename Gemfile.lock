@@ -408,6 +408,8 @@ GEM
 
 PLATFORMS
   ruby
+  x86_64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   bcrypt_pbkdf
@@ -460,4 +462,4 @@ RUBY VERSION
    ruby 2.6.5p114
 
 BUNDLED WITH
-   1.17.2
+   2.3.17
