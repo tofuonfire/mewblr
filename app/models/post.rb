@@ -7,6 +7,7 @@ class Post < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
 
   before_validation :generate_url_token, on: :create
+  before_destroy :remove_image
 
   validates :image, presence: true
   validates :caption, length: { maximum: 240 }
@@ -33,5 +34,12 @@ class Post < ApplicationRecord
 
   def generate_url_token
     self.url_token = SecureRandom.urlsafe_base64
+  end
+
+  def remove_image
+    image.remove!
+    image.thumb.remove!
+  rescue StandardError => e
+    logger.error(e.message)
   end
 end

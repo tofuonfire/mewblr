@@ -16,6 +16,8 @@ class User < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
+  before_destroy :remove_avatar
+
   validates :name, presence: true, length: { maximum: 30 }
   validates :bio, length: { maximum: 140 }
   validates :username, namespace: true, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 4, maximum: 20 },
@@ -70,4 +72,13 @@ class User < ApplicationRecord
     end
   end
   # rubocop:enable Rails/FindBy, Lint/AssignmentInCondition
+
+  private
+
+  def remove_avatar
+    avatar.remove!
+    avatar.mini.remove!
+  rescue StandardError => e
+    logger.error(e.message)
+  end
 end
