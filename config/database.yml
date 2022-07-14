@@ -58,6 +58,6 @@ production:
   adapter: mysql2
   database: mewblr_production
   username: root
-  password: <%= ENV['RAILS_DATABASE_PASSWORD'] %>
-  host: mewblr-mysql.cm7qty7gruhb.ap-northeast-1.rds.amazonaws.com
+  password: <%= Rails.application.credentials.aws[:rds_password] %>
+  host: <%= Rails.application.credentials.aws[:rds_hostname] %>
   port: 3306

@@ -30,9 +30,6 @@
 /public/uploads
 /public/uploads_test
 
-# dotenv
-/.env
-
 /.DS_Store
 /coverage
 /rspec.xml
