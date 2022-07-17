@@ -120,11 +120,11 @@ Rails.application.configure do
   host = 'mewblr.com'
   config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
-    :address        => 'email-smtp.us-east-1.amazonaws.com',
+    :address        => 'email-smtp.ap-northeast-1.amazonaws.com',
     :port           => '587',
     :authentication => :login,
-    :user_name      => ENV['AWS_SMTP_USERNAME'],
-    :password       => ENV['AWS_SMTP_PASSWORD'],
+    :user_name      => Rails.application.credentials.aws[:smtp_username],
+    :password       => Rails.application.credentials.aws[:smtp_password],
     :domain         => 'mewblr.com',
     :enable_starttls_auto => true
   }
