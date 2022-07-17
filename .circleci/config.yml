@@ -62,7 +62,7 @@ jobs:
 
       - run: mv config/database.yml.org config/database.yml
 
-      - run: sudo apt-get update && sudo apt-get install python3-pip groff-base
+      - run: sudo apt-get update --allow-releaseinfo-change && sudo apt-get install python3-pip groff-base
       - run: sudo pip3 install awscli --ignore-installed six
 
       - run:
@@ -71,12 +71,12 @@ jobs:
             IP=`curl -s ifconfig.me`
             echo "#!/bin/bash" > ./sg.sh
             echo "aws configure set region ap-northeast-1" >> ./sg.sh
-            echo "aws ec2 authorize-security-group-ingress --group-id sg-0cd1a467be874cb60 --protocol tcp --port 22 --cidr ${IP}/32" >> ./sg.sh
+            echo "aws ec2 authorize-security-group-ingress --group-id sg-02c75ff6e9f0ef303 --protocol tcp --port 22 --cidr ${IP}/32" >> ./sg.sh
             bash ./sg.sh
 
       - add_ssh_keys:
           fingerprints:
-            - "95:94:d6:9b:41:f4:31:a5:31:a3:8c:be:fa:84:01:b5"
+            - "f7:11:71:15:70:ee:ac:4e:c7:27:0f:08:4f:0c:b7:6f"
 
       - deploy:
           name: Capistrano Deploy
@@ -92,5 +92,5 @@ jobs:
             IP=`curl -s ifconfig.me`
             echo "#!/bin/bash" > ./sg.sh
             echo "aws configure set region ap-northeast-1" >> ./sg.sh
-            echo "aws ec2 revoke-security-group-ingress --group-id sg-0cd1a467be874cb60 --protocol tcp --port 22 --cidr ${IP}/32" >> ./sg.sh
+            echo "aws ec2 revoke-security-group-ingress --group-id sg-02c75ff6e9f0ef303 --protocol tcp --port 22 --cidr ${IP}/32" >> ./sg.sh
             bash ./sg.sh
