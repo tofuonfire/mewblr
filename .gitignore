@@ -30,6 +30,5 @@
 /public/uploads
 /public/uploads_test
 
-/.DS_Store
 /coverage
 /rspec.xml
