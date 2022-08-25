@@ -3,6 +3,8 @@ require 'url_constrainer'
 Rails.application.routes.draw do
   root 'static_pages#home'
 
+  get 'todoapp', to: 'static_pages#todoapp'
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'

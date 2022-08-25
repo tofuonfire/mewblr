@@ -5,6 +5,10 @@ class StaticPagesController < ApplicationController
     @feed_posts = current_user.feed.page(params[:page]).per(12) if user_signed_in?
   end
 
+  def todoapp
+    render layout: false
+  end
+
   def help; end
 
   def contact; end
