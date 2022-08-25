@@ -13,8 +13,8 @@
 //= require rails-ujs
 //= require activestorage
 //= require jquery3
-//= require infinite-scroll.pkgd.min.js
-//= require jquery.cookie.js
+//= require application/infinite-scroll.pkgd.min.js
+//= require application/jquery.cookie.js
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .
