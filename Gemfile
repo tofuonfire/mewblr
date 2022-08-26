@@ -22,6 +22,7 @@ gem 'rails-i18n'
 gem 'ransack'
 gem 'sass-rails'
 gem 'uglifier'
+gem 'webpacker'
 
 group :development, :test do
   gem 'factory_bot_rails'
