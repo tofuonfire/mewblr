@@ -9,6 +9,10 @@ class StaticPagesController < ApplicationController
     render layout: false
   end
 
+  def calendar
+    render layout: false
+  end
+
   def help; end
 
   def contact; end
