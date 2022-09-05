@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   get 'todoapp', to: 'static_pages#todoapp'
-  get 'calendar', to: 'static_pages#calendar'
+
+  get 'calendar/:year/(:month)', to: 'static_pages#calendar'
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',

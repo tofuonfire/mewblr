@@ -10,6 +10,15 @@ class StaticPagesController < ApplicationController
   end
 
   def calendar
+    if params[:month]
+      @date = Date.new(
+        params[:year].to_i,
+        params[:month].to_i
+        )
+    else
+      @date = Date.new(params[:year].to_i)
+    end
+
     render layout: false
   end
 
